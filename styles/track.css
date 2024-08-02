@@ -1,0 +1,87 @@
+body {
+  font-family: "Roboto";
+}
+
+.main {
+  margin-top: 90px;
+  margin-bottom: 100px;/*forgot*/
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 850px;
+  /*align-items: center;*/
+  margin-left: auto;/*forgot- these two makes content appear in center*/
+  margin-right: auto;
+}
+
+.back-to-orders-link {
+  display: inline-block; /*forgot*/
+  margin-bottom: 30px;
+  color: rgb(81, 158, 158);
+}
+
+.delivery-date {
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.product-info {
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.product-image {
+  margin-top: 25px;
+  max-width: 150px; /*when to use max-height and when just height*/
+  max-height: 150px;
+  margin-bottom: 50px;/*forgot*/
+}
+
+.progress-labels-container {
+  display: flex;
+  justify-content: space-between;
+
+  /*.progress-label {
+    content of this moved down below
+  }*/
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.current-status {
+  color: green;
+}
+
+@media (max-width : 575px) {
+  .progress-labels-container {
+    font-size: 16px;
+  }
+}
+
+@media (max-width : 450px) {
+  .progress-labels-container {
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+
+  .progress-label {
+    margin-bottom: 3px;
+  }
+}
+
+.progress-bar-container {
+  height: 25px;
+  width: 100%;
+
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 50px;
+  overflow: hidden;/*forgot*/
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: green;
+  border-radius: 50px;
+  width: 50%;
+}

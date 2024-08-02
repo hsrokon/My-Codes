@@ -1,0 +1,99 @@
+.container {
+  display: grid;
+
+  /*--1--*/
+  /* grid-template-rows: 100px 100px 100px 100px 100px 100px;
+  grid-template-columns: 100px 100px 100px 100px 100px 100px; */
+
+  /* grid-auto-rows: 100px; it sets the size of the rows that gets created implicitly */
+  /* grid-auto-flow: column; we can change the default
+  grid-auto-columns: 100px; */
+
+
+
+  /* grid-template-rows: repeat(2, 100px); /*1st the number you want to repeat 2nd the the value
+  grid-template-columns: 100px minmax(100px, 3fr) 1fr; /*minimum size maximum size 
+  grid-gap: 1em 3em;gaps of rows and gaps of columns 
+  grid-gap: 1em; if you just give one value it'll set gap equally in both rows and columns*/
+
+
+  /*--2--*/
+  /* grid-template-rows: 100px 300px 100px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 
+  /*each set of single quote represent row | each value inside represents column
+  'header header'
+  'main aside'
+  'footer footer'; */
+
+  /*--3--*/
+  /* grid-template-rows: repeat(4,100px);
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: start;/*start, end, baseline, center
+  align-items: end; */
+
+  /*--4--*/
+  /* height: 600px;
+  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(2, 100px);
+  /* start, end, ecnter, baseline, space-between, space-around, space-evenly 
+  /* row axis 
+  justify-content: space-evenly;
+  /* column axis
+  align-content: space-evenly; */
+
+  grid-template-rows: repeat(4, 100px);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));/*creating a responsive grid by auto-fit so it wraps instead of floating outside*/
+}
+
+/*--1--*/
+
+/* .item-1 {
+  grid-row: 1 / 3;
+  grid-column: 1 / 7;
+} */
+
+/* .item-2 {
+  grid-area: row-start col-start row-end col-end ;
+  grid-area: 2 / 4 / 4 / 6;
+  z-index: 1; /*for layering item on top
+} */
+
+/*This doesn't allow you to control at a specific place*/
+/* .item-2 {
+  grid-row: span 2;
+  grid-column: span 2;
+} */
+
+/* .item-3 {
+  /* grid-area: 3 / 1 / 7 / 7; 
+  grid-area: 3 / 1 / -1 / -1; using -1 to cover the full space
+} */
+
+/* When items are added outside of the explicitly defined grid this is referred as an implicit grid \ which doesn't inherit grid-template-rows/cols values */
+
+
+/*--2--*/
+
+/* .item-1 {
+  grid-area: header;
+}
+
+.item-2 {
+  grid-area: main;
+}
+
+.item-3 {
+  grid-area: aside;
+}
+
+.item-4 {
+  grid-area: footer;
+} */
+
+/*--3--*/
+/* aligning items individually by overwriting it's value */
+/* .item-1 {
+  justify-self: center;
+  align-self: stretch;
+} */

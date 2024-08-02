@@ -1,0 +1,96 @@
+/* BASE STYLES */
+:root {
+  --clr-dark: #0f172a;
+  --clr-light: #f1f5f9;
+  --clr-accent: #e11d48;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  word-spacing: 1.4px;
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 80%;
+  height: 700px;
+  margin: 0 auto;
+  border: 10px solid var(--clr-dark);
+}
+
+.item {
+  width: 150px;
+  height: 150px;
+  background-color: #fb7185;
+  padding: 1em;
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: 10px solid var(--clr-accent);
+  border-radius: 10px;
+}
+
+/* END OF BASE STYLES */
+
+/* Start of the test  */
+.container {
+  display: flex;
+  
+  /* justify content for aligning items on the main axis  */
+
+  /* justify-content: flex-start;  ------by default (left to right) */
+  /* flex-direction: column;  -----reverses main axis on vertical & cross axis on horizontal */
+  /* justify-content: flex-end; */
+  /* justify-content:center; */
+  /* justify-content: space-around; */
+  /* justify-content: space-between; */
+  /* justify-content: space-evenly; */
+
+  /* align-items: ; for aligning items on the cross axis  */
+
+  /* align-items: start;          ----by default (top to bottom)  */
+  /* align-items: center; */
+  /* align-items: flex-end; */
+  /* align-items: baseline; align items with baseline text  */
+
+  /* flex-wrap: wrap; wraps item when deosn't fit on the same line */
+  /* align-content: flex-end ; this only works when we set flex-wrap to =wrap an items are wrapping */
+  /* align-content: center; */
+  /* align-content:space-around; */
+  /* align-content:flex-start; */
+  /* gap: 1em; makes gap in between contents  */
+}
+
+/* .item-1 {
+  font-size: 1.5rem; --- for baseline text alignment 
+} */
+
+.item-3 {
+  /* flex-grow: 1; it allows item to grow all-over the left out space  */
+  /* flex-shrink: 6;how fast one item shrinks in comparasion to others */
+  /* flex-basis: 250px; overwrites the size of an item from default  */
+  /* .....these upper items are not suggested to use usually  */
+   flex: 1 ; /*can take three values: if you give one value other 2 will be set automatically | it's a combination of flex-grow/shrink/basis  */
+  /* align-self: center; overwrites an indivisual item under flex | works always with flex */
+
+  /* default value of order property is zero | it changes default order of an item  */
+  /* order: -1; then item-3 moves at first then item-1 and item-2 */
+}
+
+/* .item-2 {
+  align-self:flex-end ;  overwrites an indivisual item under flex
+} */

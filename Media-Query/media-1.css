@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
+  width: 95%;
+  margin-inline: auto;
+}
+
+img {
+
+  display: block;
+  width: 310px;
+  height: 172px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.cars {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+
+  /* subgrid */
+  
+}
+
+
+@media screen and (max-width : 992px) {
+  .container {
+    grid-template-columns : repeat(2, 1fr);
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  img {
+    width: 100%;
+  }
+}

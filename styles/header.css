@@ -1,0 +1,166 @@
+body {
+  font-family: "Roboto";
+}
+
+.header-section {
+  background-color: black;
+  color: white;/*forgot*/
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  align-items: center; /*forgot*/
+  justify-content: space-between;/*forgot*/
+
+  height: 60px;
+  position: fixed;/*forgot*/
+  left: 0;/*forgot*/
+  top: 0;/*forgot*/
+  right: 0;/*forgot - these are important to make a solid header*/
+}
+
+.header-left-section {
+  width: 180px;
+}
+
+@media (max-width : 800px){/*forgot*/
+  .header-left-section {
+    width: unset;
+  }
+}
+
+.header-link {
+  display: inline-block;/*forgot*/
+  padding: 6px;/*forgot*/
+  border-radius: 2px;/*forgot*/
+  cursor: pointer;/*forgot*/
+  /*color: white;*/
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0);/*forgot*/
+}
+
+.header-link:hover {
+  border: 1px solid white;
+}
+
+.web-logo {
+  width: 39px;
+  margin-top: 5px;/*forgot*/
+  border-radius: 4px;
+}
+
+.web-mobile-logo {
+  display: none;
+}
+
+@media (max-width : 575px) {
+  .web-logo {
+    display: none;
+  }
+
+  .web-mobile-logo {
+    width: 35px;
+    display: block;/*forgot*/
+    margin-top: 5px;/*forgot*/
+  }
+}
+
+.header-middle-section {
+  flex: 1;/*forgot*/
+  max-width: 850px; /*max-width not width*/
+  display: flex;
+  /*align-items: center;*/
+  margin-left: 10px;/*forgot*/
+  margin-right: 10px;/*forgot*/
+}
+
+.search-bar {
+  flex: 1;
+  width: 0;/*forgot*/
+  height: 38px;
+  padding-left: 15px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  border: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.search-button {
+  background-color: rgb(254, 189, 105);/*forgot*/
+  border: none;
+  width: 45px;/*forgot*/
+  height: 40px;
+
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  flex-shrink: 0;
+}
+
+.search-button:hover {
+  cursor: pointer;
+}
+
+.search-icon {
+  height: 22px;
+  /*align-items: center;  --- doesn't work; maybe it's an img that's why*/
+  margin-left: 2px;/*forgot*/
+  margin-top: 3px;/*forgot*/
+}
+
+.header-right-section {
+  display: flex;
+  width: 180px;/*forgot*/
+  flex-shrink: 0;/*forgot*/
+  justify-content: end;/*forgot*/
+}
+
+.order-link { /*forgot*/
+  color: white;
+}
+
+.returns-text {
+  display: block;/*forgot*/
+  font-size: 14px;
+}
+
+.orders-text {
+  display: block;/*forgot*/
+  font-size: 16px;
+  font-weight:700;
+}
+
+.cart-link {/*forgot*/
+  color: white;/*forgot*/
+  display: flex;/*forgot*/
+  align-items: center;/*forgot*/
+  position: relative;/*forgot - important here*/
+}
+
+.cart-icon {
+  /*height: 40px;*/
+  width: 50px;
+}
+
+.cart-quantity {
+  color: chocolate;
+  font-size: 16px;/*forgot*/
+  font-weight: 700;/*forgot*/
+
+  position: absolute;/*forgot - Important here*/
+  top: 4px;/*forgot*/
+  left: 22px;/*forgot*/
+
+  width: 26px;/*forgot.......!!*/
+  text-align: center;/*forgot*/
+}
+
+.cart-text {
+  margin-top: 12px;/*forgot*/
+  font-size: 15px;
+  font-weight: 700;
+}
