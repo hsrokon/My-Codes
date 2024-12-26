@@ -72,63 +72,87 @@
 // }
 // analyzeUserData();
 
+
 //Pagination of posts
-let currentPage = 1;
-const postPerPage = 10;
-let totalPosts = 0;
+// let currentPage = 1;
+// const postPerPage = 10;
+// let totalPosts = 0;
 
-async function paginate(page) {
+// async function paginate(page) {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+//         const posts = await response.json();
+
+//         totalPosts = posts.length;
+//         console.log(totalPosts);
+
+//         const start = (page - 1) * postPerPage;
+//         const end  = start + postPerPage;
+//         const paginatePosts = posts.slice(start, end);
+
+//         const postContainer = document.getElementById('post-container');
+//         postContainer.innerHTML='';
+
+//         paginatePosts.forEach(post => {
+//             const postElement = document.createElement('div');
+//             postElement.innerHTML=`
+//                 <h3 class="text-2xl my-2 font-semibold text-green-700">${post.id}. ${post.title}</h3>
+//                 <p class="my-2">${post.body}</p>
+//                 <hr>
+//             `;
+//             postContainer.appendChild(postElement);
+//         });
+
+//         const pageDisplay = document.getElementById('page-display');
+//         const totalPages = Math.ceil(totalPosts / postPerPage);
+
+//         pageDisplay.textContent=`Page ${page} of ${totalPages}`;
+
+//         updateButtonState(page);
+
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+
+// function goToPage(direction) {
+//     currentPage += direction;
+//     paginate(currentPage);
+// }
+
+// window.goToPage = goToPage;
+
+// function updateButtonState(page) {
+//     const prevButton = document.getElementById('prev-btn');
+//     const nextButton = document.getElementById('next-btn');
+//     prevButton.disabled = page===1;
+
+//     const totalPages = Math.ceil(totalPosts / postPerPage);
+//     //console.log(Math.ceil(4.2)); // Output: 5
+//     nextButton.disabled = page >= totalPages;
+// }
+
+// paginate(currentPage)
+
+
+//Post new Data
+async function createPost() {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const posts = await response.json();
-
-        totalPosts = posts.length;
-        console.log(totalPosts);
-
-        const start = (page - 1) * postPerPage;
-        const end  = start + postPerPage;
-        const paginatePosts = posts.slice(start, end);
-
-        const postContainer = document.getElementById('post-container');
-        postContainer.innerHTML='';
-
-        paginatePosts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.innerHTML=`
-                <h3 class="text-2xl my-2 font-semibold text-green-700">${post.id}. ${post.title}</h3>
-                <p class="my-2">${post.body}</p>
-                <hr>
-            `;
-            postContainer.appendChild(postElement);
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({
+                userId: 1,
+                title: 'Created post 1',
+                body: 'This is the first created post',
+            }),
         });
-
-        const pageDisplay = document.getElementById('page-display');
-        const totalPages = Math.ceil(totalPosts / postPerPage);
-
-        pageDisplay.textContent=`Page ${page} | Total Pages ${totalPages}`;
-
-        updateButtonState(page);
-
+        
+        const createdPost = await response.json()
+        console.log(createdPost);
+        
     } catch (error) {
         console.error(error);
     }
 }
-
-function goToPage(direction) {
-    currentPage += direction;
-    paginate(currentPage);
-}
-
-window.goToPage = goToPage;
-
-function updateButtonState(page) {
-    const prevButton = document.getElementById('prev-btn');
-    const nextButton = document.getElementById('next-btn');
-    prevButton.disabled = page===1;
-
-    const totalPages = Math.ceil(totalPosts / postPerPage);
-    //console.log(Math.ceil(4.2)); // Output: 5
-    nextButton.disabled = page >= totalPages;
-}
-
-paginate(currentPage)
+createPost();
