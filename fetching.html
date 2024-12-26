@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fetching</title>
     <link href="./output.css" rel="stylesheet">
 </head>
-<body>
+<body class="w-11/12 mx-auto">
+    <h1 class="text-3xl font-semibold my-4">Page Contents:</h1>
 
-    <div id="post-container" class="w-11/12 mx-auto"></div>
+    <div id="post-container" class=""></div>
+
+    <div id="pagination-controls" class="flex justify-around my-4">
+        <button id="prev-btn" class="text-blue-500" onclick="goToPage(-1)" disabled>Previous</button>
+        <p id="page-display"></p>
+        <button id="next-btn" class="text-blue-500" onclick="goToPage(1)">Next</button>
+    </div>
+
     <script type="module" src="scripts/fetching.js"></script>
     
 </body>

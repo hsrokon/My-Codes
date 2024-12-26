@@ -45,29 +45,90 @@
 // filterFetchTest();
 
 //Count and analyze user data
-async function analyzeUserData() {  
+// async function analyzeUserData() {  
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+//         const posts = await response.json();
+        
+//         const userPosts = {};
+//         const userCountedPost = document.getElementById('post-container');
+//         posts.forEach(post => {
+//             userPosts[post.userId] = (userPosts[post.userId] || 0) +1; //checks if the user has any post in our object(if no then by default 0) then adds 1 after each loop count then saves it on our created object in format like:(api's user id : api's post count) and This counts the total number of posts for each userId and stores it in the userPosts object.
+//         });
+        
+//         Object.keys(userPosts).forEach(userId => { //Object.keys(userPosts) recovers an array of all user IDs.
+//             const postElement = document.createElement('div');
+//             postElement.innerHTML=`
+//             <div class="flex justify-evenly">
+//             <h2>User Id: ${userId}</h2>
+//             <p>Total post: ${userPosts[userId]}</p>
+//             </div>
+//             `
+//             userCountedPost.appendChild(postElement);
+//         })
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+// analyzeUserData();
+
+//Pagination of posts
+let currentPage = 1;
+const postPerPage = 10;
+let totalPosts = 0;
+
+async function paginate(page) {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         const posts = await response.json();
-        
-        const userPosts = {};
-        const userCountedPost = document.getElementById('post-container');
-        posts.forEach(post => {
-            userPosts[post.userId] = (userPosts[post.userId] || 0) +1; //checks if the user has any post in our object(if no then by default 0) then adds 1 after each loop count then saves it on our created object in format like:(api's user id : api's post count) and This counts the total number of posts for each userId and stores it in the userPosts object.
-        });
-        
-        Object.keys(userPosts).forEach(userId => { //Object.keys(userPosts) recovers an array of all user IDs.
+
+        totalPosts = posts.length;
+        console.log(totalPosts);
+
+        const start = (page - 1) * postPerPage;
+        const end  = start + postPerPage;
+        const paginatePosts = posts.slice(start, end);
+
+        const postContainer = document.getElementById('post-container');
+        postContainer.innerHTML='';
+
+        paginatePosts.forEach(post => {
             const postElement = document.createElement('div');
             postElement.innerHTML=`
-            <div class="flex justify-evenly">
-            <h2>User Id: ${userId}</h2>
-            <p>Total post: ${userPosts[userId]}</p>
-            </div>
-            `
-            userCountedPost.appendChild(postElement);
-        })
+                <h3 class="text-2xl my-2 font-semibold text-green-700">${post.id}. ${post.title}</h3>
+                <p class="my-2">${post.body}</p>
+                <hr>
+            `;
+            postContainer.appendChild(postElement);
+        });
+
+        const pageDisplay = document.getElementById('page-display');
+        const totalPages = Math.ceil(totalPosts / postPerPage);
+
+        pageDisplay.textContent=`Page ${page} | Total Pages ${totalPages}`;
+
+        updateButtonState(page);
+
     } catch (error) {
         console.error(error);
     }
 }
-analyzeUserData();
+
+function goToPage(direction) {
+    currentPage += direction;
+    paginate(currentPage);
+}
+
+window.goToPage = goToPage;
+
+function updateButtonState(page) {
+    const prevButton = document.getElementById('prev-btn');
+    const nextButton = document.getElementById('next-btn');
+    prevButton.disabled = page===1;
+
+    const totalPages = Math.ceil(totalPosts / postPerPage);
+    //console.log(Math.ceil(4.2)); // Output: 5
+    nextButton.disabled = page >= totalPages;
+}
+
+paginate(currentPage)
