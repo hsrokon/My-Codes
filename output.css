@@ -564,12 +564,28 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.flex {
+  display: flex;
+}
+
 .h-\[\.15rem\] {
   height: .15rem;
 }
 
 .w-11\/12 {
   width: 91.666667%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .rounded-md {
