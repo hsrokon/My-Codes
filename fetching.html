@@ -7,14 +7,22 @@
     <link href="./output.css" rel="stylesheet">
 </head>
 <body class="w-11/12 mx-auto">
-    <h1 class="text-3xl font-semibold my-4">Page Contents:</h1>
+    <!-- <h1 class="text-3xl font-semibold my-4">Page Contents:</h1>
 
-    <div id="post-container" class=""></div>
+    <div id="post-container" class=""></div> 
 
     <div id="pagination-controls" class="flex justify-around my-4">
         <button id="prev-btn" class="text-blue-500" onclick="goToPage(-1)" disabled>Previous</button>
         <p id="page-display"></p>
         <button id="next-btn" class="text-blue-500" onclick="goToPage(1)">Next</button>
+    </div> -->
+
+    <h1 class="text-3xl font-semibold my-4">Comments</h1>
+    <div id="comment-container"></div>
+    <div id="pagination-controls" class="flex justify-around my-4">
+        <button id="prev-btn" class="text-blue-500" onclick="pageChanger(-1)" disabled>Previous</button>
+        <p id="page-display"></p>
+        <button id="next-btn" class="text-blue-500" onclick="pageChanger(1)">Next</button>
     </div>
 
     <script type="module" src="scripts/fetching.js"></script>

@@ -136,23 +136,85 @@
 
 
 //Post new Data
-async function createPost() {
+// async function createPost() {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+//             method: 'POST',
+//             headers: {'Content-Type' : 'application/json'},
+//             body: JSON.stringify({
+//                 userId: 1,
+//                 title: 'Created post 1',
+//                 body: 'This is the first created post',
+//             }),
+//         });
+        
+//         const createdPost = await response.json()
+//         console.log(createdPost);
+        
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+// createPost();
+
+
+//Comments 
+let currentPage =1;
+const commentsPerPage = 20;
+let totalComments = 0;
+
+async function commentsRender(page) {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({
-                userId: 1,
-                title: 'Created post 1',
-                body: 'This is the first created post',
-            }),
+        const response = await fetch('https://jsonplaceholder.typicode.com/comments');
+        const comments = await response.json();
+
+        totalComments = comments.length;
+        
+        const commentContainer = document.getElementById('comment-container');
+        commentContainer.innerHTML='';
+        const start = (page -1) * commentsPerPage;
+        const end = start + commentsPerPage;
+        const paginatedComments = comments.slice(start, end);
+
+        paginatedComments.forEach(comment => {
+            const commentElement = document.createElement('div');
+            commentElement.innerHTML=`
+            <div class="border border-green-400 rounded-md my-2 px-2">
+            <div class="flex my-2 font-thin italic text-slate-600">
+            <h3 class="px-1">User:${comment.postId}</h3>
+            <p class="font-semibold px1">${comment.name}</p>
+            <p class="px-1">${comment.email}</p>
+            <p class="px-1">C. no: ${comment.id}</p>
+            </div>
+            <p class="my-2 mb-5 text-green-600"><span class="text-black font-semibold">Comment: </span>${comment.body}</p>
+            </div>
+            `;
+            commentContainer.appendChild(commentElement);
         });
-        
-        const createdPost = await response.json()
-        console.log(createdPost);
-        
+
+        updateButtonStage(page);
+
+        const totalPages = Math.ceil(totalComments / commentsPerPage)
+        document.getElementById('page-display').textContent=`${page} of ${totalPages}`;
     } catch (error) {
         console.error(error);
     }
 }
-createPost();
+
+function pageChanger(direction) {
+    currentPage += direction
+    commentsRender(currentPage)
+}
+window.pageChanger = pageChanger;
+
+console.log(commentsPerPage);
+
+function updateButtonStage(page) {
+    const prev = document.getElementById('prev-btn');
+    const next = document.getElementById('next-btn');
+    prev.disabled = page ===1;
+    const totalPages = Math.ceil(totalComments / commentsPerPage);
+    next.disabled = page >=totalPages;
+}
+
+commentsRender(currentPage);
