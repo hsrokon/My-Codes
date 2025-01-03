@@ -18,11 +18,29 @@
     </div> -->
 
     <h1 class="text-3xl font-semibold my-4">Comments</h1>
+    <div class="flex justify-center">
+        <input
+        id="search-bar" 
+        type="text"
+        placeholder="Search by name or Email.."
+        class="border-2 pl-2 p-2 pr-10 rounded rounded-r-none border-blue-600">
+        <button 
+        id="search-btn"
+        class="border-2 p-2 rounded rounded-l-none border-l-0 border-blue-600">Search
+        </button>
+    </div>
     <div id="comment-container"></div>
     <div id="pagination-controls" class="flex justify-around my-4">
-        <button id="prev-btn" class="text-blue-500" onclick="pageChanger(-1)" disabled>Previous</button>
-        <p id="page-display"></p>
-        <button id="next-btn" class="text-blue-500" onclick="pageChanger(1)">Next</button>
+        <button 
+        id="prev-btn" 
+        class="text-blue-500" 
+        onclick="pageChanger(-1)" 
+        disabled>Previous</button>
+        <p id="page-display">
+        </p>
+        <button id="next-btn" 
+        class="text-blue-500" 
+        onclick="pageChanger(1)">Next</button>
     </div>
 
     <script type="module" src="scripts/fetching.js"></script>

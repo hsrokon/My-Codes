@@ -160,18 +160,26 @@
 
 //Comments 
 let currentPage =1;
-const commentsPerPage = 20;
+const commentsPerPage = 15;
 let totalComments = 0;
+let allComments = [];
 
-async function commentsRender(page) {
+async function commentsFetch() {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/comments');
-        const comments = await response.json();
+        allComments = await response.json();
+        commentsRender(allComments, currentPage);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
+function commentsRender(comments, page) {
         totalComments = comments.length;
         
         const commentContainer = document.getElementById('comment-container');
         commentContainer.innerHTML='';
+
         const start = (page -1) * commentsPerPage;
         const end = start + commentsPerPage;
         const paginatedComments = comments.slice(start, end);
@@ -196,18 +204,25 @@ async function commentsRender(page) {
 
         const totalPages = Math.ceil(totalComments / commentsPerPage)
         document.getElementById('page-display').textContent=`${page} of ${totalPages}`;
-    } catch (error) {
-        console.error(error);
-    }
+}
+
+document.getElementById('search-bar').addEventListener('input', ()=> search());
+document.getElementById('search-btn').addEventListener('click', ()=> search());
+
+function search() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+
+    const filteredComments = allComments.filter(comment => 
+        comment.name.toLowerCase().includes(query) || comment.email.toLowerCase().includes(query)
+    )
+    currentPage = 1;
+    commentsRender(filteredComments, currentPage);
 }
 
 function pageChanger(direction) {
     currentPage += direction
-    commentsRender(currentPage)
+    commentsRender(allComments, currentPage)
 }
-window.pageChanger = pageChanger;
-
-console.log(commentsPerPage);
 
 function updateButtonStage(page) {
     const prev = document.getElementById('prev-btn');
@@ -217,4 +232,5 @@ function updateButtonStage(page) {
     next.disabled = page >=totalPages;
 }
 
-commentsRender(currentPage);
+window.pageChanger = pageChanger;
+commentsFetch();
