@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums Gallery</title>
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body class="w-11/12 mx-auto">
+    <h1 class="text-3xl font-semibold my-4">Albums Gallery</h1>
+
+    <!-- filter albums by user -->
+    <div>
+        <input 
+            id="user-id-input"
+            type="number"
+            placeholder="Filter by user ID"
+            class="border-2 border-green-400 rounded-md pl-2 py-1">
+        <button
+            id="filter-btn"
+            class="bg-green-400 text-white px-4 py-1 rounded 
+            border-2 border-green-400"
+        >
+            Filter
+        </button>
+    </div>
+
+    <div id="albums-container" class="my-6"></div>
+
+    <div id="photos-container" class="my-6"></div>
+
+    <div class="my-6">
+        <h2 class="text-2xl font-semibold my-2">Create a new album</h2>
+        <form id="new-album-form" class="flex flex-col">
+            <input 
+                id="new-album-user-id"
+                type="number"
+                placeholder="User ID"
+                class="border-2 border-green-400 p-2 rounded mb-2"
+                required
+            >
+            <input 
+                id="new-album-title"
+                type="text"
+                placeholder="ALbum title"
+                class="border-2 border-green-400 p-2 rounded mb-2"
+                required
+            >
+            <button
+                type="submit"
+                class="bg-green-400 text-white px-4 py-2 rounded 
+                hover:bg-white hover:text-green-400 border-2 border-green-400 hover:transition duration-200 ease-in-out"
+            >Add Album</button>
+        </form>
+    </div>
+
+    <script type="module" src="scripts/album.js"></script>
+</body>
+</html>
